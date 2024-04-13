@@ -2,11 +2,13 @@ pico-8 cartridge // http://www.pico-8.com
 version 42
 __lua__
 
+#include src/util.lua
 #include src/constants.lua
 #include src/math2d.lua
 #include src/monsters.lua
 #include src/spells.lua
 #include src/player.lua
+#include src/enemy.lua
 
 function _init()
 end
@@ -14,6 +16,7 @@ end
 function _update()
     update_monsters()
     update_player()
+    update_enemy()
 end
 
 function _draw()
@@ -21,6 +24,7 @@ function _draw()
     draw_monsters()
     draw_gui()
     draw_player()
+    draw_enemy()
 end
 
 __gfx__

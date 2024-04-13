@@ -2,6 +2,7 @@ sprites = {
     summon1 = 10,
     summon2 = 11,
     player = 12,
+    enemy = 13,
 }
 
 function waypoints(level)
@@ -12,3 +13,7 @@ function waypoints(level)
         { x = 64, y = 12 },
         { x = 120, y = 120 } }
 end
+
+mana_rate = .2
+frame_rate = 30
+enemy_mana_rate = .1

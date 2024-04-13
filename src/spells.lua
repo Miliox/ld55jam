@@ -2,8 +2,12 @@
 spells = {
     {
         sprite = sprites.summon1,
-        func = function(caster)
+        func = function(caster, reverse)
+            reverse = reverse or false
             wps = waypoints(nil)
+            if reverse then
+                wps = rev(wps)
+            end
             add_monster(player_monster_queue, {x=caster.pos.x, y=caster.pos.y}, {v=0.5}, wps)
         end,
         cost = 1
