@@ -9,7 +9,7 @@ __lua__
 #include src/player.lua
 
 function _init()
-    add_monster({x=12, y=12}, {v=0.5}, {{x=64,y=64}, {x=12,y=96}, {x=12,y=64}, {x=64,y=12}, {x=120,y=120}})
+    add_monster({x=12, y=12}, {v=0.5}, waypoints(nil))
 end
 
 function _update()
