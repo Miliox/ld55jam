@@ -35,9 +35,6 @@ end
 
 
 function update_monster_queue(queue)
-    -- TODO: Replace by waypoint system
-    local gx = 120
-    local gy = 10
     local proximity_limit = 8
 
     for i, monster in ipairs(queue) do
