@@ -17,12 +17,14 @@ spells = {
 }
 
 function draw_gui()
+    local x = (player.selected_spell - 1) * 9
+    local y = 128 - 10
+    rect(x, y, x + 9, y + 9, 14)
     local x = 1
     for spell in all(spells) do
         spr(spell.sprite, x, 128 - 9)
         x = x + 9
     end
-    local x = (player.selected_spell - 1) * 9
-    local y = 128 - 10
-    rect(x, y, x + 9, y + 9, 14)
+    rect(x, y, x + 20, y + 9, 15)
+    rectfill(x+1, y+1, x + 19 * player.mana / player.max_mana, y + 8, 14)
 end

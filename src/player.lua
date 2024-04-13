@@ -5,6 +5,7 @@ player = {
     pos = {x=10, y=10},
     selected_spell = 1,
     mana = 5,
+    max_mana = 5,
 }
 
 function update_player()
@@ -29,6 +30,9 @@ function update_player()
         player.selected_spell = count(spells)
     end
     player.mana = player.mana + mana_rate / frame_rate
+    if player.mana > player.max_mana then
+        player.mana = player.max_mana
+    end
 end
 
 function draw_player()
