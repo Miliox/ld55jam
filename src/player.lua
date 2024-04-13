@@ -11,13 +11,17 @@ function init_player()
 end
 
 function update_player()
-    if btnp(0) then
+    -- Button Map:
+    -- ⬆️, ⬇️, ⬅️, ➡️, 🅾️, and ❎
+    -- 0, 1, 2, 3, 4, and 5
+
+    if btnp(⬅️) then
         player.selected_spell = player.selected_spell - 1
     end
-    if btnp(1) then
+    if btnp(➡️) then
         player.selected_spell = player.selected_spell + 1
     end
-    if btnp(5) then
+    if btnp(❎) then
         local spell = spells[player.selected_spell]
         if player.mana >= spell.cost then
             spell.func(player)
