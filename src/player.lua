@@ -1,5 +1,3 @@
-mana_rate = .2
-frame_rate = 30
 
 player = {
     pos = {x=10, y=10},
@@ -7,6 +5,10 @@ player = {
     mana = 5,
     max_mana = 5,
 }
+
+function init_player()
+    player.pos = waypoints(nil)[1]
+end
 
 function update_player()
     if btnp(0) then

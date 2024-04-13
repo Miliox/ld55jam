@@ -11,7 +11,7 @@ function waypoints(level)
         { x = 12, y = 96 },
         { x = 12, y = 64 },
         { x = 64, y = 12 },
-        { x = 120, y = 120 } }
+        { x = 120, y = 112 } }
 end
 
 mana_rate = .2

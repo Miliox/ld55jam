@@ -4,6 +4,11 @@ enemy = {
     mana = 1,
 }
 
+function init_enemy()
+    local wps = waypoints(nil)
+    enemy.pos = wps[#wps]
+end
+
 function update_enemy()
     if enemy.mana > spells[1].cost then
        spells[1].func(enemy, true)
