@@ -18,5 +18,5 @@ function update_enemy()
 end
 
 function draw_enemy()
-    spr(sprites.enemy, enemy.pos.x, enemy.pos.y)
+    spr(sprites.enemy, enemy.pos.x, enemy.pos.y, 1, 1, true)
 end
