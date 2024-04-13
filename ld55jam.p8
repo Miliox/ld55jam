@@ -3,6 +3,9 @@ version 42
 __lua__
 x = 64
 y = 64
+
+#include src/math2d.lua
+
 function _update()
     if (btn(0)) then x=x-1 end
     if (btn(1)) then x=x+1 end
