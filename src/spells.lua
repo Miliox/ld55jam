@@ -1,19 +1,15 @@
-sprites = {
-    summon1 = 10,
-    summon2 = 11,
-}
 
 spells = {
     {
         sprite = sprites.summon1,
         func = function(caster)
-            add_monster(caster.pos)
+            add_monster({x=caster.pos.x, y=caster.pos.y}, {v=0.5})
         end
     },
     {
         sprite = sprites.summon2,
         func = function(caster)
-            add_monster(caster.pos)
+            add_monster(caster.pos, {v=0.5})
         end
     }
 }

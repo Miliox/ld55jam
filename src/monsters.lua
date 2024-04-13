@@ -10,11 +10,11 @@ function draw_monsters()
         spr(1, monster.pos.x, monster.pos.y)
     end
 
-    for i, a in ipairs(monster_queue) do
-        for j, b in ipairs(monster_queue) do
-            if i != j then print(dist(a.pos.x, a.pos.y, b.pos.x, b.pos.y)) end
-        end
-    end
+    -- for i, a in ipairs(monster_queue) do
+    --     for j, b in ipairs(monster_queue) do
+    --         if i != j then print(dist(a.pos.x, a.pos.y, b.pos.x, b.pos.y)) end
+    --     end
+    -- end
 
 end
 
