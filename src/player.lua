@@ -5,6 +5,7 @@ player = {
     mana = 5,
     max_mana = 5,
     queue = player_monster_queue,
+    health = 3,
 }
 
 function init_player()
@@ -44,4 +45,7 @@ end
 
 function draw_player()
     spr(sprites.player, player.pos.x, player.pos.y)
+    if player.health == 0 then
+        print("You died")
+    end
 end

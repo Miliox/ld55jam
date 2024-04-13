@@ -3,6 +3,7 @@ enemy = {
     pos = {x = 120, y = 100},
     mana = 1,
     queue = enemy_monster_queue,
+    health = 3,
 }
 
 function init_enemy()
@@ -20,4 +21,7 @@ end
 
 function draw_enemy()
     spr(sprites.enemy, enemy.pos.x, enemy.pos.y, 1, 1, true)
+    if enemy.health == 0 then
+        print("You won")
+    end
 end

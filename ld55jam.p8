@@ -16,6 +16,9 @@ function _init()
 end
 
 function _update()
+    if player.health == 0 or enemy.health == 0 then
+        return
+    end
     update_monsters()
     update_player()
     update_enemy()

@@ -31,11 +31,10 @@ end
 function update_monsters()
     update_monster_queue(player_monster_queue)
     update_monster_queue(enemy_monster_queue)
+    fight()
 end
 
-
 function update_monster_queue(queue)
-    local proximity_limit = 8
 
     for i, monster in ipairs(queue) do
         wp = monster.wps[1]
@@ -52,10 +51,11 @@ function update_monster_queue(queue)
 
         for j, another in ipairs(queue) do
             if i > j then
-                if dist(x, y, another.pos.x, another.pos.y) < proximity_limit then
-                    collide = true;
+                if in_collision({x=x, y=y}, another.pos) then
+                    collide = true
                     break
                 end
+
             end
         end
 
@@ -70,5 +70,27 @@ function update_monster_queue(queue)
         end
 
         ::continue::
+    end
+end
+
+function in_collision(pos1, pos2)
+    local proximity_limit = 8
+    return dist(pos1.x, pos1.y, pos2.x, pos2.y) < proximity_limit
+end
+
+function fight()
+    local player_monster = player_monster_queue[1]
+    local enemy_monster = enemy_monster_queue[1]
+    if player_monster and enemy_monster and in_collision(player_monster.pos, enemy_monster.pos) then
+        deli(player_monster_queue, 1)
+        deli(enemy_monster_queue, 1)
+    end
+    if player_monster and in_collision(player_monster.pos, enemy.pos) then
+        enemy.health = enemy.health - 1
+        deli(player_monster_queue, 1)
+    end
+    if enemy_monster and in_collision(enemy_monster.pos, player.pos) then
+        player.health = player.health - 1
+        deli(enemy_monster_queue, 1)
     end
 end
