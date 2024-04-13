@@ -33,10 +33,10 @@ function update_monsters()
         local collide = false
 
         for j, another in ipairs(monster_queue) do
-            if i != j then
+            if i > j then
                 if dist(x, y, another.pos.x, another.pos.y) < proximity_limit then
                     collide = true;
-                    break;
+                    break
                 end
             end
         end

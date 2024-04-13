@@ -9,6 +9,7 @@ __lua__
 function _init()
     add_monster({x=12, y=12, v=0.5})
     add_monster({x=112, y=112, v=0.5})
+    add_monster({x=112, y=112, v=0.5})
 end
 
 function _update()
