@@ -22,7 +22,7 @@ end
 function _draw()
     cls()
     draw_monsters()
-    draw_spells()
+    draw_gui()
     draw_player()
 end
 

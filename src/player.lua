@@ -33,7 +33,4 @@ end
 
 function draw_player()
     spr(sprites.player, player.pos.x, player.pos.y)
-    local x = (player.selected_spell - 1) * 9
-    local y = 128 - 10
-    rect(x, y, x + 9, y + 9, 14)
 end
