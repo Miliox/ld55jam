@@ -1,8 +1,8 @@
 
 monster_queue = {}
 
-function add_monster(pos)
-    add(monster_queue, {pos=pos})
+function add_monster(pos, dir)
+    add(monster_queue, {pos=pos, dir=dir})
 end
 
 function draw_monsters()
@@ -27,8 +27,8 @@ function update_monsters()
     for i, monster in ipairs(monster_queue) do
         dx, dy = norm(diff(monster.pos.x, monster.pos.y, gx, gy))
 
-        local x = monster.pos.x + dx * monster.pos.v
-        local y = monster.pos.y + dy * monster.pos.v
+        local x = monster.pos.x + dx * monster.dir.v
+        local y = monster.pos.y + dy * monster.dir.v
 
         local collide = false
 
