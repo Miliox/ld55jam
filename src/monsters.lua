@@ -9,16 +9,41 @@ function draw_monsters()
     for monster in all(monster_queue) do
         spr(1, monster.pos.x, monster.pos.y)
     end
+
+    for i, a in ipairs(monster_queue) do
+        for j, b in ipairs(monster_queue) do
+            if i != j then print(dist(a.pos.x, a.pos.y, b.pos.x, b.pos.y)) end
+        end
+    end
+
 end
 
 function update_monsters()
     -- TODO: Replace by waypoint system
-    gx = 120
-    gy = 10
+    local gx = 120
+    local gy = 10
+    local proximity_limit = 8
 
-    for monster in all(monster_queue) do
+    for i, monster in ipairs(monster_queue) do
         dx, dy = norm(diff(monster.pos.x, monster.pos.y, gx, gy))
-        monster.pos.x += dx * monster.pos.v
-        monster.pos.y += dy * monster.pos.v
+
+        local x = monster.pos.x + dx * monster.pos.v
+        local y = monster.pos.y + dy * monster.pos.v
+
+        local collide = false
+
+        for j, another in ipairs(monster_queue) do
+            if i != j then
+                if dist(x, y, another.pos.x, another.pos.y) < proximity_limit then
+                    collide = true;
+                    break;
+                end
+            end
+        end
+
+        if not collide then
+            monster.pos.x = x
+            monster.pos.y = y
+        end
     end
 end
