@@ -20,7 +20,7 @@ function update_enemy()
 end
 
 function draw_enemy()
-    spr(sprites.enemy, enemy.pos.x, enemy.pos.y, 1, 1, true)
+    spr(sprites.enemy, enemy.pos.x, enemy.pos.y, 1, 1, true, enemy.health <= 0)
     if enemy.health == 0 then
         print("You won")
     end

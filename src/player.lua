@@ -44,7 +44,7 @@ function update_player()
 end
 
 function draw_player()
-    spr(sprites.player, player.pos.x, player.pos.y)
+    spr(sprites.player, player.pos.x, player.pos.y, 1, 1, false, player.health <= 0)
     if player.health == 0 then
         print("You died")
     end
