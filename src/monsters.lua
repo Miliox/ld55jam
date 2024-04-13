@@ -1,8 +1,8 @@
 
 monster_queue = {}
 
-function add_monster(pos, dir)
-    add(monster_queue, {pos=pos, dir=dir})
+function add_monster(pos, dir, wps)
+    add(monster_queue, {pos=pos, dir=dir, wps=wps})
 end
 
 function draw_monsters()
@@ -25,25 +25,34 @@ function update_monsters()
     local proximity_limit = 8
 
     for i, monster in ipairs(monster_queue) do
-        dx, dy = norm(diff(monster.pos.x, monster.pos.y, gx, gy))
+        wp = monster.wps[1]
 
-        local x = monster.pos.x + dx * monster.dir.v
-        local y = monster.pos.y + dy * monster.dir.v
+        if wp != nil then
+            dx, dy = norm(diff(monster.pos.x, monster.pos.y, wp.x, wp.y))
 
-        local collide = false
+            local x = monster.pos.x + dx * monster.dir.v
+            local y = monster.pos.y + dy * monster.dir.v
 
-        for j, another in ipairs(monster_queue) do
-            if i > j then
-                if dist(x, y, another.pos.x, another.pos.y) < proximity_limit then
-                    collide = true;
-                    break
+            local collide = false
+
+            for j, another in ipairs(monster_queue) do
+                if i > j then
+                    if dist(x, y, another.pos.x, another.pos.y) < proximity_limit then
+                        collide = true;
+                        break
+                    end
                 end
             end
-        end
 
-        if not collide then
-            monster.pos.x = x
-            monster.pos.y = y
+            if not collide then
+                monster.pos.x = x
+                monster.pos.y = y
+            end
+
+            if dist(x, y, wp.x, wp.y) < 4 then
+                del(monster.wps, monster.wps[1])
+            end
+
         end
     end
 end

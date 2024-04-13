@@ -3,7 +3,12 @@ spells = {
     {
         sprite = sprites.summon1,
         func = function(caster)
-            add_monster({x=caster.pos.x, y=caster.pos.y}, {v=0.5})
+            wps = {{x=64,y=64},
+                   {x=12,y=96},
+                   {x=12,y=64},
+                   {x=64,y=12},
+                   {x=120,y=120}}
+            add_monster({x=caster.pos.x, y=caster.pos.y}, {v=0.5}, wps)
         end,
         cost = 1
     },
