@@ -4,18 +4,10 @@ spells = {
         sprite = sprites.summon1,
         func = function(caster)
             wps = waypoints(nil)
-            add_monster({x=caster.pos.x, y=caster.pos.y}, {v=0.5}, wps)
+            add_monster(player_monster_queue, {x=caster.pos.x, y=caster.pos.y}, {v=0.5}, wps)
         end,
         cost = 1
     },
-    {
-        sprite = sprites.summon2,
-        func = function(caster)
-            wps = waypoints(nil)
-            add_monster({x=caster.pos.x, y=caster.pos.y}, {v=0.7}, wps)
-        end,
-        cost = 2
-    }
 }
 
 function draw_gui()

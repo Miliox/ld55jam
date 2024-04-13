@@ -1,12 +1,22 @@
 
-monster_queue = {}
+player_monster_queue = {}
+enemy_monster_queue = {}
 
-function add_monster(pos, dir, wps)
-    add(monster_queue, {pos=pos, dir=dir, wps=wps})
+function all_monsters()
+    return player_monster_queue..enemy_monster_queue
+end
+
+function add_monster(queue, pos, dir, wps)
+    add(queue, {pos=pos, dir=dir, wps=wps})
 end
 
 function draw_monsters()
-    for monster in all(monster_queue) do
+    draw_monster_queue(player_monster_queue)
+    draw_monster_queue(enemy_monster_queue)
+end
+
+function draw_monster_queue(queue)
+    for monster in all(queue) do
         spr(1, monster.pos.x, monster.pos.y)
     end
 
@@ -19,12 +29,18 @@ function draw_monsters()
 end
 
 function update_monsters()
+    update_monster_queue(player_monster_queue)
+    update_monster_queue(enemy_monster_queue)
+end
+
+
+function update_monster_queue(queue)
     -- TODO: Replace by waypoint system
     local gx = 120
     local gy = 10
     local proximity_limit = 8
 
-    for i, monster in ipairs(monster_queue) do
+    for i, monster in ipairs(queue) do
         wp = monster.wps[1]
 
         if wp != nil then
@@ -35,7 +51,7 @@ function update_monsters()
 
             local collide = false
 
-            for j, another in ipairs(monster_queue) do
+            for j, another in ipairs(queue) do
                 if i > j then
                     if dist(x, y, another.pos.x, another.pos.y) < proximity_limit then
                         collide = true;
