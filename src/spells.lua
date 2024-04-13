@@ -8,7 +8,7 @@ spells = {
             if reverse then
                 wps = rev(wps)
             end
-            add_monster(player_monster_queue, {x=caster.pos.x, y=caster.pos.y}, {v=0.5,looking_left=true}, wps)
+            add_monster(caster.queue, {x=caster.pos.x, y=caster.pos.y}, {v=0.5,looking_left=true}, wps)
         end,
         cost = 1
     },

@@ -39,35 +39,36 @@ function update_monster_queue(queue)
 
     for i, monster in ipairs(queue) do
         wp = monster.wps[1]
+        if not wp then
+            goto continue
+        end
+        dx, dy = norm(diff(monster.pos.x, monster.pos.y, wp.x, wp.y))
 
-        if wp != nil then
-            dx, dy = norm(diff(monster.pos.x, monster.pos.y, wp.x, wp.y))
+        local x = monster.pos.x + dx * monster.dir.v
+        local y = monster.pos.y + dy * monster.dir.v
+        local looking_left = dx <= 0
 
-            local x = monster.pos.x + dx * monster.dir.v
-            local y = monster.pos.y + dy * monster.dir.v
-            local looking_left = dx <= 0
+        local collide = false
 
-            local collide = false
-
-            for j, another in ipairs(queue) do
-                if i > j then
-                    if dist(x, y, another.pos.x, another.pos.y) < proximity_limit then
-                        collide = true;
-                        break
-                    end
+        for j, another in ipairs(queue) do
+            if i > j then
+                if dist(x, y, another.pos.x, another.pos.y) < proximity_limit then
+                    collide = true;
+                    break
                 end
             end
-
-            if not collide then
-                monster.pos.x = x
-                monster.pos.y = y
-                monster.dir.looking_left = looking_left
-            end
-
-            if dist(x, y, wp.x, wp.y) < 4 then
-                del(monster.wps, monster.wps[1])
-            end
-
         end
+
+        if not collide then
+            monster.pos.x = x
+            monster.pos.y = y
+            monster.dir.looking_left = looking_left
+        end
+
+        if dist(x, y, wp.x, wp.y) < 4 then
+            del(monster.wps, monster.wps[1])
+        end
+
+        ::continue::
     end
 end

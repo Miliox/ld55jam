@@ -4,6 +4,7 @@ player = {
     selected_spell = 1,
     mana = 5,
     max_mana = 5,
+    queue = player_monster_queue,
 }
 
 function init_player()

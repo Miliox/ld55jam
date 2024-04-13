@@ -2,6 +2,7 @@
 enemy = {
     pos = {x = 120, y = 100},
     mana = 1,
+    queue = enemy_monster_queue,
 }
 
 function init_enemy()
