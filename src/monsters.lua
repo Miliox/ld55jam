@@ -17,7 +17,7 @@ end
 
 function draw_monster_queue(queue)
     for monster in all(queue) do
-        spr(1, monster.pos.x, monster.pos.y)
+        spr(1, monster.pos.x, monster.pos.y, 1, 1, monster.dir.looking_left)
     end
 
     -- for i, a in ipairs(monster_queue) do
@@ -48,6 +48,7 @@ function update_monster_queue(queue)
 
             local x = monster.pos.x + dx * monster.dir.v
             local y = monster.pos.y + dy * monster.dir.v
+            local looking_left = dx <= 0
 
             local collide = false
 
@@ -63,6 +64,7 @@ function update_monster_queue(queue)
             if not collide then
                 monster.pos.x = x
                 monster.pos.y = y
+                monster.dir.looking_left = looking_left
             end
 
             if dist(x, y, wp.x, wp.y) < 4 then
