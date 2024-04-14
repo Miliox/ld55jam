@@ -39,13 +39,6 @@ function draw_monster_queue(queue)
     for monster in all(queue) do
         spr(sprites[monster.element.."_monster"], monster.pos.x, monster.pos.y, 1, 1, monster.dir.looking_left)
     end
-
-    -- for i, a in ipairs(monster_queue) do
-    --     for j, b in ipairs(monster_queue) do
-    --         if i != j then print(dist(a.pos.x, a.pos.y, b.pos.x, b.pos.y)) end
-    --     end
-    -- end
-
 end
 
 function update_monsters()

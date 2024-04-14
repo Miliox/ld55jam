@@ -29,7 +29,6 @@ spells = {
                 end,
                 -- TODO: Time to figure out OO?
                 draw = function(spell)
-                    -- print(caster.target_idx)
                     local selected = get_monster(caster.target_idx)
                     if selected ~= nil then
                         local x = selected.pos.x
