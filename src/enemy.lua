@@ -8,7 +8,7 @@ enemy = {
 }
 
 function init_enemy()
-    local wps = waypoints(nil)
+    local wps = waypoints()
     enemy.pos = wps[#wps]
 end
 

@@ -11,7 +11,7 @@ player = {
 }
 
 function init_player()
-    player.pos = waypoints(nil)[1]
+    player.pos = waypoints()[1]
 end
 
 -- Button Map:

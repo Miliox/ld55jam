@@ -5,7 +5,7 @@ spells = {
         sprite = function() return sprites.summon1 + player.element_idx - 1 end,
         func = function(caster, reverse)
             reverse = reverse or false
-            wps = waypoints(nil)
+            wps = waypoints()
             if reverse then
                 wps = rev(wps)
             end

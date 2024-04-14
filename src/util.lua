@@ -1,5 +1,5 @@
 function rev(array)
-    res = {}
+    local res = {}
     for i = #array, 1, -1 do
         add(res, array[i])
     end

@@ -10,13 +10,36 @@ sprites = {
     enemy = 13,
 }
 
-function waypoints(level)
+-- stat(95): the current clock second (0-61)
+-- http://pico8wiki.com/index.php?title=Stat
+global_level = (stat(95) % 3) + 1
+
+function waypoints()
     -- TODO: do something based on the level :D
-    return { { x = 64, y = 64 },
-        { x = 12, y = 96 },
-        { x = 12, y = 64 },
-        { x = 64, y = 12 },
-        { x = 115, y = 105 } }
+    if global_level == 1 then
+        return {
+            { x = 64, y = 64 },
+            { x = 12, y = 96 },
+            { x = 12, y = 64 },
+            { x = 64, y = 12 },
+            { x = 115, y = 105 }
+        }
+    end
+    if global_level == 2 then
+        return {
+            { x = 12, y = 12},
+            { x = 127 - 12, y = 127 - 12}
+        }
+    end
+    if global_level == 3 then
+        return {
+            { x = 12, y = 127 - 20 },
+            { x = 40, y = 35 },
+            { x = 127 - 40, y = 35 },
+            { x = 127 - 12, y = 127 - 20}
+        }
+    end
+    assert(true, level)
 end
 
 mana_rate = .2
