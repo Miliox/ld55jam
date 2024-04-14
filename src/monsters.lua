@@ -106,9 +106,17 @@ function fight()
     if player_monster and enemy_monster and in_collision(player_monster.pos, enemy_monster.pos) then
         player_monster_died, enemy_monster_died = monster_fight(player_monster, enemy_monster)
         if player_monster_died then
+            add(events, {
+                type = "monster_died",
+                monster = player_monster
+            })
             deli(player_monster_queue, 1)
         end
         if enemy_monster_died then
+            add(events, {
+                type = "monster_died",
+                monster = enemy_monster
+            })
             deli(enemy_monster_queue, 1)
         end
     end

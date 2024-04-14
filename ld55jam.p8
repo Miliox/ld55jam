@@ -10,6 +10,7 @@ __lua__
 #include src/player.lua
 #include src/enemy.lua
 #include src/particles.lua
+#include src/events.lua
 
 function _init()
     init_player()
@@ -22,6 +23,7 @@ function _update()
         return
     end
     update_monsters()
+    update_events()
     update_player()
     update_enemy()
     update_particles()

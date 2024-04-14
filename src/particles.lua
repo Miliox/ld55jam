@@ -2,14 +2,10 @@
 particles = {}
 
 function update_particles()
-    if #particles < 50 then
-        add_particle(rnd(128), rnd(128), rnd(10),
-            rnd(3) - 1.5, rnd(3) - 1.5, rnd(3) - 1.5,
-            rnd(.1) - 0.5, rnd(60), rnd(16))
-    end
     local alive_particles = {}
     for particle in all(particles) do
-        particle.vel.z = particle.vel.z + particle.w
+        -- minus since weight pulls particles down
+        particle.vel.z = particle.vel.z - particle.w 
         particle.pos.x = particle.pos.x + particle.vel.x
         particle.pos.y = particle.pos.y + particle.vel.y
         particle.pos.z = particle.pos.z + particle.vel.z
