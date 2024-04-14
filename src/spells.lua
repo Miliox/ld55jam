@@ -28,6 +28,8 @@ spells = {
 }
 
 function draw_gui()
+    line(0, 117, 127, 117, 1)
+    rectfill(0, 118, 127, 127, 0)
     local x = (player.selected_spell - 1) * 9
     local y = 128 - 10
     rect(x, y, x + 9, y + 9, 14)
