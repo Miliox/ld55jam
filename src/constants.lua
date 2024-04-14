@@ -46,4 +46,4 @@ end
 
 mana_rate = .2
 frame_rate = 30
-enemy_mana_rate = .1
+enemy_mana_rate = .2

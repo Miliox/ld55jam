@@ -45,7 +45,7 @@ spells = {
                 caster.element_idx = 1
             end
         end,
-        cost = 1
+        cost = .3
     },
     -- interchange
     {
