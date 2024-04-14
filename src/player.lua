@@ -6,6 +6,7 @@ player = {
     max_mana = 5,
     queue = player_monster_queue,
     health = 3,
+    element_idx = 1,
 }
 
 function init_player()

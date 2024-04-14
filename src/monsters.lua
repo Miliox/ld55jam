@@ -8,14 +8,14 @@ elements = {
     "earth", -- fills in water
 }
 
-function add_monster(queue, pos, dir, wps)
+function add_monster(queue, pos, dir, wps, element)
     add(queue, 
         {
             pos = pos,
             dir = dir,
             wps = wps,
             -- TODO: Put in elements based on summoning spell
-            element = rnd(elements)
+            element = element
         })
 end
 

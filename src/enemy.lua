@@ -4,6 +4,7 @@ enemy = {
     mana = 1,
     queue = enemy_monster_queue,
     health = 3,
+    element_idx = 1,
 }
 
 function init_enemy()
@@ -17,6 +18,7 @@ function update_enemy()
        enemy.mana = enemy.mana - spells[1].cost
     end
     enemy.mana = enemy.mana + enemy_mana_rate / frame_rate
+    enemy.element_idx = flr(rnd(3)) + 1
 end
 
 function draw_enemy()

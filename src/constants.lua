@@ -2,8 +2,8 @@ sprites = {
     fire_monster = 1,
     water_monster = 2,
     earth_monster = 3,
-    summon1 = 10,
-    summon2 = 11,
+    summon1 = 24,
+    change_element = 11,
     player = 12,
     enemy = 13,
 }
