@@ -96,4 +96,20 @@ function draw_gui()
     end
     rect(x, y, x + 20, y + 9, 15)
     rectfill(x+1, y+1, x + 19 * player.mana / player.max_mana, y + 8, 14)
+    x = x + 22
+    for i = 0, 2 do
+        local s = sprites.empty_heart
+        if player.health > i then
+            s = sprites.player_heart
+        end
+        spr(s, x + i * 9, 128 - 9)
+    end
+    x = x + 9 * 3 + 3
+    for i = 0, 2 do
+        local s = sprites.empty_heart
+        if enemy.health > i then
+            s = sprites.enemy_heart
+        end
+        spr(s, x + i * 9, 128 - 9)
+    end
 end

@@ -8,6 +8,9 @@ sprites = {
     smite1 = 27,
     player = 12,
     enemy = 13,
+    player_heart = 4,
+    enemy_heart = 6,
+    empty_heart = 5,
 }
 
 -- stat(95): the current clock second (0-61)
@@ -15,7 +18,6 @@ sprites = {
 global_level = (stat(95) % 3) + 1
 
 function waypoints()
-    -- TODO: do something based on the level :D
     if global_level == 1 then
         return {
             { x = 64, y = 64 },
