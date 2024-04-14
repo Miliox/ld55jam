@@ -2,8 +2,21 @@
 player_monster_queue = {}
 enemy_monster_queue = {}
 
+elements = {
+    "fire", -- burns earth
+    "water", -- puts out fire
+    "earth", -- fills in water
+}
+
 function add_monster(queue, pos, dir, wps)
-    add(queue, {pos=pos, dir=dir, wps=wps})
+    add(queue, 
+        {
+            pos = pos,
+            dir = dir,
+            wps = wps,
+            -- TODO: Put in elements based on summoning spell
+            element = rnd(elements)
+        })
 end
 
 function draw_monsters()
@@ -13,7 +26,7 @@ end
 
 function draw_monster_queue(queue)
     for monster in all(queue) do
-        spr(1, monster.pos.x, monster.pos.y, 1, 1, monster.dir.looking_left)
+        spr(sprites[monster.element.."_monster"], monster.pos.x, monster.pos.y, 1, 1, monster.dir.looking_left)
     end
 
     -- for i, a in ipairs(monster_queue) do
@@ -97,5 +110,13 @@ function fight()
 end
 
 function monster_fight(left, right)
-    return true, true
+    if left.element == right.element then
+        return true, true
+    end
+    if left.element == "fire" and right.element == "water"
+        or left.element == "water" and right.element == "earth"
+        or left.element == "earth" and right.element == "fire" then
+        return true, false
+    end
+    return false, true
 end
