@@ -82,8 +82,13 @@ function fight()
     local player_monster = player_monster_queue[1]
     local enemy_monster = enemy_monster_queue[1]
     if player_monster and enemy_monster and in_collision(player_monster.pos, enemy_monster.pos) then
-        deli(player_monster_queue, 1)
-        deli(enemy_monster_queue, 1)
+        player_monster_died, enemy_monster_died = monster_fight(player_monster, enemy_monster)
+        if player_monster_died then
+            deli(player_monster_queue, 1)
+        end
+        if enemy_monster_died then
+            deli(enemy_monster_queue, 1)
+        end
     end
     if player_monster and in_collision(player_monster.pos, enemy.pos) then
         enemy.health = enemy.health - 1
@@ -93,4 +98,8 @@ function fight()
         player.health = player.health - 1
         deli(enemy_monster_queue, 1)
     end
+end
+
+function monster_fight(left, right)
+    return true, true
 end
