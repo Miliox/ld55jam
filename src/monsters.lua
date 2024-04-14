@@ -14,14 +14,25 @@ function add_monster(queue, pos, dir, wps, element)
             pos = pos,
             dir = dir,
             wps = wps,
-            -- TODO: Put in elements based on summoning spell
-            element = element
+            element = element,
+            parent = queue,
         })
 end
 
 function draw_monsters()
     draw_monster_queue(player_monster_queue)
     draw_monster_queue(enemy_monster_queue)
+end
+
+function get_monster(idx)
+    if idx <= #player_monster_queue then
+        return player_monster_queue[idx]
+    end
+    return enemy_monster_queue[idx - #player_monster_queue]
+end
+
+function get_monster_count()
+    return #player_monster_queue + #enemy_monster_queue
 end
 
 function draw_monster_queue(queue)
@@ -109,14 +120,22 @@ function fight()
     end
 end
 
+function wins(left_element, right_element)
+    if (left_element == "fire" and right_element == "earth")
+        or (left_element == "water" and right_element == "fire")
+        or (left_element == "earth" and right_element == "water") then
+        return true
+    end
+    return false
+end
+
 function monster_fight(left, right)
     if left.element == right.element then
         return true, true
     end
-    if left.element == "fire" and right.element == "water"
-        or left.element == "water" and right.element == "earth"
-        or left.element == "earth" and right.element == "fire" then
-        return true, false
+    if wins(left.element, right.element) then
+        return false, true
     end
-    return false, true
+
+    return true, false
 end
