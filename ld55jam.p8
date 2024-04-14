@@ -9,6 +9,7 @@ __lua__
 #include src/spells.lua
 #include src/player.lua
 #include src/enemy.lua
+#include src/particles.lua
 
 function _init()
     init_player()
@@ -23,6 +24,7 @@ function _update()
     update_monsters()
     update_player()
     update_enemy()
+    update_particles()
 end
 
 function _draw()
@@ -32,6 +34,7 @@ function _draw()
     draw_gui()
     draw_player()
     draw_enemy()
+    draw_particles()
 end
 
 __gfx__
