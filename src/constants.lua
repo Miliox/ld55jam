@@ -29,8 +29,8 @@ function waypoints()
     end
     if global_level == 2 then
         return {
-            { x = 12, y = 12},
-            { x = 127 - 12, y = 127 - 12}
+            { x = 8, y = 12},
+            { x = 127 - 12, y = 127 - 20}
         }
     end
     if global_level == 3 then
@@ -38,7 +38,7 @@ function waypoints()
             { x = 12, y = 127 - 20 },
             { x = 40, y = 35 },
             { x = 127 - 40, y = 35 },
-            { x = 127 - 12, y = 127 - 20}
+            { x = 127 - 20, y = 127 - 20}
         }
     end
     assert(true, level)
