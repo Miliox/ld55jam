@@ -2,10 +2,6 @@
 player_monster_queue = {}
 enemy_monster_queue = {}
 
-function all_monsters()
-    return player_monster_queue..enemy_monster_queue
-end
-
 function add_monster(queue, pos, dir, wps)
     add(queue, {pos=pos, dir=dir, wps=wps})
 end
