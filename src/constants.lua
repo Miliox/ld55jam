@@ -4,6 +4,7 @@ sprites = {
     earth_monster = 3,
     summon1 = 24,
     change_element = 11,
+    interchange = 9,
     smite1 = 27,
     player = 12,
     enemy = 13,

@@ -19,11 +19,6 @@ function add_monster(queue, pos, dir, wps, element)
         })
 end
 
-function draw_monsters()
-    draw_monster_queue(player_monster_queue)
-    draw_monster_queue(enemy_monster_queue)
-end
-
 function get_monster(idx)
     if idx <= #player_monster_queue then
         return player_monster_queue[idx]
@@ -33,6 +28,20 @@ end
 
 function get_monster_count()
     return #player_monster_queue + #enemy_monster_queue
+end
+
+function draw_box_around(target_idx)
+    local selected = get_monster(target_idx)
+    if selected ~= nil then
+        local x = selected.pos.x
+        local y = selected.pos.y
+        rect(x - 1, y - 1, x + 9, y + 9, 11)
+    end
+end
+
+function draw_monsters()
+    draw_monster_queue(player_monster_queue)
+    draw_monster_queue(enemy_monster_queue)
 end
 
 function draw_monster_queue(queue)

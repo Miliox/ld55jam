@@ -29,14 +29,8 @@ spells = {
                 end,
                 -- TODO: Time to figure out OO?
                 draw = function(spell)
-                    local selected = get_monster(caster.target_idx)
-                    if selected ~= nil then
-                        local x = selected.pos.x
-                        local y = selected.pos.y
-                        rect(x - 1, y - 1, x + 9, y + 9, 11)
-                    end
+                    draw_box_around(caster.target_idx)
                 end,
-                selected_idx = 1,
             }
         end,
 
@@ -53,6 +47,40 @@ spells = {
         end,
         cost = 1
     },
+    -- interchange
+    {
+        sprite = function() return sprites.interchange end,
+        func = function(caster)
+            player.active_spell = {
+                complete = function(target)
+                    if #player_monster_queue < 2 then
+                        return
+                    end
+                     local idx = caster.target_idx
+                    if idx == #player_monster_queue then
+                        idx = idx - 1
+                    end
+                    temp = player_monster_queue[idx].element
+                    player_monster_queue[idx].element = player_monster_queue[idx + 1].element
+                    player_monster_queue[idx + 1].element = temp
+
+                end,
+                -- TODO: Time to figure out OO?
+                draw = function(spell)
+                    if #player_monster_queue < 2 then
+                        return
+                    end
+                    local idx = caster.target_idx
+                    if idx == #player_monster_queue then
+                        idx = idx - 1
+                    end
+                    draw_box_around(idx)
+                    draw_box_around(idx + 1)
+                end,
+            }
+        end,
+        cost = .3
+    }
 }
 
 function draw_gui()
