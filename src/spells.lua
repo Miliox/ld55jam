@@ -20,18 +20,22 @@ spells = {
         func = function(caster)
             player.active_spell = {
                 complete = function(target)
-                    if wins(elements[caster.element_idx], target.element) then
-                        del(target.parent, target)
+                    if target ~= nil then
+                        if wins(elements[caster.element_idx], target.element) then
+                            del(target.parent, target)
+                        end
                     end
                     player.active_spell_func = nil
                 end,
                 -- TODO: Time to figure out OO?
                 draw = function(spell)
-                    print(caster.target_idx)
+                    -- print(caster.target_idx)
                     local selected = get_monster(caster.target_idx)
-                    local x = selected.pos.x
-                    local y = selected.pos.y
-                    rect(x - 1, y - 1, x + 9, y + 9, 11)
+                    if selected ~= nil then
+                        local x = selected.pos.x
+                        local y = selected.pos.y
+                        rect(x - 1, y - 1, x + 9, y + 9, 11)
+                    end
                 end,
                 selected_idx = 1,
             }
