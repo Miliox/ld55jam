@@ -27,7 +27,7 @@ end
 
 function _draw()
     cls()
-    map()
+    map(16, 0, 0, 0, 16, 16)
     draw_monsters()
     draw_gui()
     draw_player()
